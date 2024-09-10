@@ -39,13 +39,14 @@ You can find trained model in folder [trained_model](trained_model)
 
 ## Hyperparameters
 
-Because normal PPO can complete 31/32 stages with faster training times (when I use RND). I don't want to waste my time. I just try this algorithms with stage 8-4.
-My hyperparameters experience:
-- I try entropy coef with 0.1 and 0.5 and find that 0.5 will still better. With 0.1, maybe Mario can't complete world 8-4.
-- I try num target network with 5 and 10 and I find that 5 networks help model convert better but 10 networks maybe help model complete this stage when I remove additional reward when Mario goes to correct pipe (But maybe we need more training for conclude because with 10 target network, the win rate for stage 8-4 still not 100% without correct pipe additional reward).
-- I try int adv coef with 0.5 and 1 and I find that model can't complete (or at least need a lot of steps) this stages.
-- I don't change other hyperparameters compare with PPO RND
-- update_proportion set to 1 because we don't face the problem that prediction network convert
+Because normal PPO can complete 31/32 stages with faster training times (when I use RND), I don't want to waste time. I will only try this algorithm with stage 8-4.
+
+My hyperparameter experience:
+- I tried entropy coefficient values of 0.1 and 0.5 and found that 0.5 performs better. With 0.1, Mario might not be able to complete world 8-4.
+- I experimented with 5 and 10 target networks, and found that 5 networks help the model converge better. However, 10 networks might help the model complete this stage when I remove the additional reward for Mario going to the correct pipe. (But more training might be needed to have conclusions, as with 10 target networks, the win rate for stage 8-4 is still not 100% without the correct pipe additional reward).
+- I tried intrinsic advantage coefficients of 0.5 and 1, and found that the model cannot complete the stage (or at least requires a lot of steps).
+- I did not change other hyperparameters compared to PPO + RND.
+- I set update_proportion to 1 because we do not face the problem of the prediction network converging too quickly.
 
 ## Requirements
 
